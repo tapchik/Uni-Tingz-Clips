@@ -119,11 +119,11 @@
     (assert (from-russia (yes-or-no "Ты из России? (yes/no): ")))
 )
 
-(defrule ask-if-hates-russia "СПРОСИТЬ, ИСПЫТЫВАЕТ ЛИ НЕНАВИСТЬ К РОССИИ (HATES_RUSSIA)"
+(defrule ask-if-hates-russia "СПРОСИТЬ, ИСПЫТЫВАЕТ ЛИ НЕНАВИСТЬ К РОССИИ (HATES-RUSSIA)"
     (not (solution ?))
     (not (hates-russia ?))
     =>
-    (assert (hates-russia (yes-or-no ("Ты испытываешь ненависть к России? (yes/no): "))))
+    (assert (hates-russia (yes-or-no "Ты испытываешь ненависть к России? (yes/no): ")))
 )
 
 (defrule determine-likes-genre-fantasy
