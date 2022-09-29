@@ -194,7 +194,7 @@
 
 (defrule result-spread-wings "RULE 9. RESULT = Ольга Голотвина - Крылья распахнуть!"
     (not (solution ?))
-    (likes pirates yes)
+    (likes-pirates yes)
     (likes-flying-pirates yes)
     =>
     (assert (solution yes))
