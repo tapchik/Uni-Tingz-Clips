@@ -170,7 +170,7 @@
 
 (defrule rule-likes-pirates "RULE 6. LIKES-PIRATES"
     (or (likes-fantasy yes)
-        (likes-sea-adventure))
+        (likes-sea-adventure yes))
     =>
     (assert (likes-pirates yes))
     (print "Думаю, тебе понравятся пираты" crlf) )
