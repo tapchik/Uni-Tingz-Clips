@@ -1,166 +1,195 @@
-{
-    "ask-for-age": {
+[
+    {
+        "name": "ask-for-age",
         "conditions": [ ["solution", "eq", "null"], "and", ["age", "eq", "null"] ],
         "actions": [ {"func": "ask_int", "arg_1": "age", "arg_2": "Сколько тебе лет? Ответ: "} ]
     },
-    "ask-if-likes-spies": {
+    {
+        "name": "ask-if-likes-spies",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-spies", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-spies", "arg_2": "Тебе нравится шпионаж? (yes/no): "} ]
     },
-    "ask-if-read-sharp-objects": {
+    {
+        "name": "ask-if-read-sharp-objects",
         "conditions": [ ["solution", "eq", "null"], "and", ["read-sharp-objects", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "read-sharp-objects", "arg_2": "Ты читал Острые Предметы? (yes/no): "} ]
     },
-    "ask-if-watched-mulholland-drive": {
+    {
+        "name": "ask-if-watched-mulholland-drive",
         "conditions": [ ["solution", "eq", "null"], "and", ["watched-mulholland-drive", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "watched-mulholland-drive", "arg_2": "Ты смотрел фильм Mulholland Drive? (yes/no): "} ]
     },
-    "ask-if-likes-robinzonada": {
+    {
+        "name": "ask-if-likes-robinzonada",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-robinzonada", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-robinzonada", "arg_2": "Тебе нравится робинзонада? (yes/no): "} ]
     },
-    "ask-if-likes-sea-theme": {
+    {
+        "name": "ask-if-likes-sea-theme",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-sea-theme", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-sea-theme", "arg_2": "Тебе нравится морская тематика? (yes/no): "} ]
     },
-    "ask-if-likes-adventure": {
+    {
+        "name": "ask-if-likes-adventure",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-adventure", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-adventure", "arg_2": "Тебе нравятся приключения? (yes/no): "} ]
     },
-    "ask-if-played-wow": {
+    {
+        "name": "ask-if-played-wow",
         "conditions": [ ["solution", "eq", "null"], "and", ["played-wow", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "played-wow", "arg_2": "Ты играл в World of Warcraft? (yes/no): "} ]
     },
-    "ask-if-likes-flying-pirates": {
+    {
+        "name": "ask-if-likes-flying-pirates",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-flying-pirates", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-flying-pirates", "arg_2": "Тебе нравятся летающие пираты? (yes/no): "} ]
     },
-    "ask-if-likes-time-machine": {
+    {
+        "name": "ask-if-likes-time-machine",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-time-machine", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-time-machine", "arg_2": "Тебе нравятся машины времени? (yes/no): "} ]
     },
-    "ask-if-watched-hunger-games": {
+    {
+        "name": "ask-if-watched-hunger-games",
         "conditions": [ ["solution", "eq", "null"], "and", ["watched-hunger-games", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "watched-hunger-games", "arg_2": "Ты смотрел Голодные Игры? (yes/no): "} ]
     },
-    "ask-if-likes-pseudoscience": {
+    {
+        "name": "ask-if-likes-pseudoscience",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-pseudoscience", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "likes-pseudoscience", "arg_2": "Тебе нравится псевдонаука? (yes/no): "} ]
     },
-    "ask-if-from-russia": {
+    {
+        "name": "ask-if-from-russia",
         "conditions": [ ["solution", "eq", "null"], "and", ["from-russia", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "from-russia", "arg_2": "Ты из России? (yes/no): "} ]
     },
-    "ask-if-hates-russia": {
+    {
+        "name": "ask-if-hates-russia",
         "conditions": [ ["solution", "eq", "null"], "and", ["hates-russia", "eq", "null"] ],
         "actions": [ {"func": "yes_or_no", "arg_1": "hates-russia", "arg_2": "Ты испытываешь ненависть к России? (yes/no): "} ]
     },
 
 
 
-    "RULE-1-result-woman-in-the-window": {
+    {
+        "name": "RULE-1-result-woman-in-the-window",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-thrillers", "eq", "yes"], "and", ["acceptable-mental-illness", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "solution", "arg_2": "yes"},
             {"func": "print", "arg_1": "Рекомендую книгу: Эй Джей Финн - Женщина В Окне"}
          ]
     },
-    "RULE-2-rule-likes-thrillers": {
+    {
+        "name": "RULE-2-rule-likes-thrillers",
         "conditions": [ ["likes-spies", "eq", "yes"], "and", ["likes-detectives", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-thrillers", "arg_2": "yes"},
             {"func": "print", "arg_1": "Предполагаю, что тебе нравятся триллеры"}
         ]
     },
-    "RULE-3-rule-likes-detectives": {
+    {
+        "name": "RULE-3-rule-likes-detectives",
         "conditions": [ ["read-sharp-objects", "eq", "yes"], "and", ["age", ">", "18"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-detectives", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе нравятся детективы"}
         ]
     },
-    "RULE-4-rule-acceptable-mental-illness": {
+    {
+        "name": "RULE-4-rule-acceptable-mental-illness",
         "conditions": [ ["watched-mulholland-drive", "eq", "yes"], "and", ["age", ">", "16"] ],
         "actions": [
             {"func": "assert", "arg_1": "acceptable-mental-illness", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тема психических отклонений приемлема"}
         ]
     },
-    "RULE-5-result-secret-island": {
+    {
+        "name": "RULE-5-result-secret-island",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-robinzonada", "eq", "yes"], "and", ["likes-pirates", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "solution", "arg_2": "yes"},
             {"func": "print", "arg_1": "Рекомендую книгу: Жуль Верн - Таинственный Остров"}
         ]
     },
-    "RULE-6-rule-likes-pirates": {
+    {
+        "name": "RULE-6-rule-likes-pirates",
         "conditions": [ ["likes-fantasy", "eq", "yes"], "or", ["likes-sea-adventure", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-pirates", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравятся пираты"}
         ]
     },
-    "RULE-7-rule-likes-sea-adventure": {
+    {
+        "name": "RULE-7-rule-likes-sea-adventure",
         "conditions": [ ["likes-sea-theme", "eq", "yes"], "and", ["likes-adventure", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-sea-adventure", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравятся морские приключения"}
         ]
     },
-    "RULE-8-rule-likes-fantasy": {
+    {
+        "name": "RULE-8-rule-likes-fantasy",
         "conditions": [ ["played-wow", "eq", "yes"], "and", ["age", ">", "15"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-fantasy", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравится жанр фэнтези"}
         ]
     },
-    "RULE-9-result-spread-wings": {
+    {
+        "name": "RULE-9-result-spread-wings",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-pirates", "eq", "yes"], "and", ["likes-flying-pirates", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "solution", "arg_2": "yes"},
             {"func": "print", "arg_1": "Рекомендую книгу: Ольга Голотвина - Крылья распахнуть"}
         ]
     },
-    "RULE-10-result-time-machine": {
+    {
+        "name": "RULE-10-result-time-machine",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-time-machine", "eq", "yes"], "and", ["likes-chronofantasy", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "solution", "arg_2": "yes"},
             {"func": "print", "arg_1": "Рекомендую книгу: Герберт Уэллс - Машина Времени"}
         ]
     },
-    "RULE-11-rule-likes-chronofantasy": {
+    {
+        "name": "RULE-11-rule-likes-chronofantasy",
         "conditions": [ ["likes-travel", "eq", "yes"], "and", ["likes-time-travel", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-chronofantasy", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравятся хронофантастика"}
         ]
     },
-    "RULE-12-rule-likes-travel": {
+    {
+        "name": "RULE-12-rule-likes-travel",
         "conditions": [ ["likes-adventure", "eq", "yes"], "or", ["watched-hunger-games", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-travel", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравятся путешествия"}
         ]
     },
-    "RULE-13-rule-likes-time-travel": {
+    {
+        "name": "RULE-13-rule-likes-time-travel",
         "conditions": [ ["likes-adventure", "eq", "yes"], "and", ["likes-pseudoscience", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-time-travel", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравятся путешествия во времени"}
         ]
     },
-    "RULE-14-result-left-alone": {
+    {
+        "name": "RULE-14-result-left-alone",
         "conditions": [ ["solution", "eq", "null"], "and", ["likes-chronofantasy", "eq", "yes"], "and", ["likes-russian-setting", "eq", "yes"] ],
         "actions": [
             {"func": "assert", "arg_1": "solution", "arg_2": "yes"},
             {"func": "print", "arg_1": "Рекомендую книгу: Иван Мартынов - И Тогда Он Остался Один"}
         ]
     },
-    "RULE-15-rule-likes-russian-setting": {
+    {
+        "name": "RULE-15-rule-likes-russian-setting",
         "conditions": [ ["solution", "eq", "null"], "and", ["from-russia", "eq", "yes"], "or", ["solution", "eq", "null"], "and", ["hates-russia", "eq", "no"] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-russian-setting", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравится русский сэттинг"}
         ]
     }
-}
+]
