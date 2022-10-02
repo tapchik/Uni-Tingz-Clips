@@ -73,14 +73,14 @@
         ]
     },
     "RULE-3-rule-likes-detectives": {
-        "conditions": [ ["read-sharp-objects", "eq", "yes"], "and", ["age", ">", "18"] ],
+        "conditions": [ ["read-sharp-objects", "eq", "yes"], "and", ["age", ">", 18] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-detectives", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе нравятся детективы"}
         ]
     },
     "RULE-4-rule-acceptable-mental-illness": {
-        "conditions": [ ["watched-mulholland-drive", "eq", "yes"], "and", ["age", ">", "16"] ],
+        "conditions": [ ["watched-mulholland-drive", "eq", "yes"], "and", ["age", ">", 16] ],
         "actions": [
             {"func": "assert", "arg_1": "acceptable-mental-illness", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тема психических отклонений приемлема"}
@@ -108,7 +108,7 @@
         ]
     },
     "RULE-8-rule-likes-fantasy": {
-        "conditions": [ ["played-wow", "eq", "yes"], "and", ["age", ">", "15"] ],
+        "conditions": [ ["played-wow", "eq", "yes"], "and", ["age", ">", 15] ],
         "actions": [
             {"func": "assert", "arg_1": "likes-fantasy", "arg_2": "yes"},
             {"func": "print", "arg_1": "Думаю, тебе понравится жанр фэнтези"}

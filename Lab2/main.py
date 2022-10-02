@@ -3,8 +3,6 @@ import json
 from random import choice
 import pathlib
 
-from numpy import true_divide
-
 class rule:
 
     def __init__(self, name:str, conditions: list, actions: list) -> None:
@@ -38,7 +36,6 @@ class machine:
     
     def perform_actions(self, rule_name: str) -> None:
         rule = self.rules[rule_name]
-        print(f"Performing: {rule.name} ({rule.activated}, {rule.requires_input})")
         for action in self.rules[rule_name].actions:
             if action["func"] == "ask_int":
                 self.answered[action["arg_1"]] = self.ask_int(action["arg_2"])
@@ -72,10 +69,9 @@ class machine:
     def print(text: str) -> None:
         print(text)
     
-    def interprete(self, rule_name: str) -> bool:
-        condition = self.rules[rule_name].conditions
+    def interprete(self, rule_name: str) -> tuple:
         text = ""
-        for item in condition:
+        for item in self.rules[rule_name].conditions:
             temp = ""
             if isinstance(item, list):
                 temp += f"self.answered[\"{item[0]}\"]"
@@ -87,29 +83,35 @@ class machine:
                     temp += " < "
                 if item[2] == "null":
                     temp += "None"
+                elif isinstance(item[2], int):
+                    temp += f"{item[2]}"
                 else:
-                    temp += f"\"item[2]\""
+                    temp += f"\"{item[2]}\""
             elif isinstance(item, str):
                 temp = f" {item} "
             text += temp
-        #print(text, "->")
-        #print(eval(text))
-        return eval(text)
+        ready = bool()
+        try:
+            ready = eval(text)
+        except:
+            ready = False
+        return text, ready
     
     def run(self) -> None:
         while True:
             # perform all available
             for rule in self.rules.values():
-                ready = self.interprete(rule.name)
-                if rule.name == "RULE-15-rule-likes-russian-setting":
-                    x = 5
+                cond, ready = self.interprete(rule.name)
+                #if rule.name == "RULE-15-rule-likes-russian-setting":
+                #    x = 5
                 if  ready == True and rule.activated == False and rule.requires_input == False:
-                    self.perform_actions(rule)
+                    self.perform_actions(rule.name)
                     rule.activated = True
 
             options = []
             for rule in self.rules.values():
-                if self.interprete(rule.name) == True and rule.activated == False:
+                cond, ready = self.interprete(rule.name)
+                if ready == True and rule.activated == False:
                     options += [rule.name]
             try:
                 chosen_rule = choice(options)
@@ -118,15 +120,14 @@ class machine:
             except:
                 break
         
-        
+def main():
 
-jsonfile = pathlib.Path(__file__).parent.resolve()
-jsonfile = str(jsonfile) + "/rules.json"
-machine = machine(jsonfile)
-machine.run()
+    DEBUG = True
 
-#for info in machine.data:
-#    machine.interprete(info["conditions"])
+    jsonfile = pathlib.Path(__file__).parent.resolve()
+    jsonfile = str(jsonfile) + "/rules.json"
+    m = machine(jsonfile)
+    m.run()
 
-#yes_or_no("manka", "Тебе нравится манная каша? Ответ: ")
-#print(rules)
+if __name__ == "__main__":
+    main()
