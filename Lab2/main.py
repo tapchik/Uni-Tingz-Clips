@@ -127,7 +127,7 @@ class machine:
         
 def main():
 
-    DEBUG = True
+    DEBUG = False
 
     jsonfile = pathlib.Path(__file__).parent.resolve()
     jsonfile = str(jsonfile) + "/rules.json"
