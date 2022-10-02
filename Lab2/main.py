@@ -111,19 +111,21 @@ class machine:
                 self.rules[chosen_rule].activated = True
             except:
                 break
+            self.implications()
 
-            # calculating implications
-            while True:
-                stack = []
-                for rule in self.rules.values():
-                    cond, ready = self.interprete(rule.id)
-                    if  ready == True and rule.activated == False and rule.requires_input == False:
-                        stack += [rule]
-                for rule in stack:
+    def implications(self):
+        # calculating implications
+        while True:
+            done = True
+            for rule in self.rules.values():
+                cond, ready = self.interprete(rule.id)
+                if  ready == True and rule.activated == False and rule.requires_input == False:
                     self.perform_actions(rule.id)
                     rule.activated = True
-                if len(stack) == 0:
+                    done = False
                     break
+            if done == True:
+                break
         
 def main():
 
@@ -132,7 +134,13 @@ def main():
     jsonfile = pathlib.Path(__file__).parent.resolve()
     jsonfile = str(jsonfile) + "/rules.json"
     m = machine(jsonfile)
-    m.run()
+
+    if DEBUG == False:
+        m.run()
+    elif DEBUG == True:
+        m.perform_actions("ask-if-read-sharp-objects")
+        m.perform_actions("ask-for-age")
+        m.implications()
 
 if __name__ == "__main__":
     main()
