@@ -5,8 +5,8 @@ import pathlib
 
 class rule:
 
-    def __init__(self, name:str, conditions: list, actions: list) -> None:
-        self.name = name
+    def __init__(self, id:str, conditions: list, actions: list) -> None:
+        self.id = id
         self.conditions = conditions
         self.actions = actions
         self.activated = False
@@ -26,17 +26,16 @@ class machine:
         with open(jsonfile, "r", encoding='utf-8') as read_rules:
             self.raw_data = json.load(read_rules)
 
-        for name, info in self.raw_data.items():
-            self.rules[name] = rule(name, info["conditions"], info["actions"])
+        for id, info in self.raw_data.items():
+            self.rules[id] = rule(id, info["conditions"], info["actions"])
 
         for r in self.rules.values():
             for condition in r.conditions:
                 if isinstance(condition, list):
                     self.answered[condition[0]] = None
     
-    def perform_actions(self, rule_name: str) -> None:
-        rule = self.rules[rule_name]
-        for action in self.rules[rule_name].actions:
+    def perform_actions(self, rule_id: str) -> None:
+        for action in self.rules[rule_id].actions:
             if action["func"] == "ask_int":
                 self.answered[action["arg_1"]] = self.ask_int(action["arg_2"])
             elif action["func"] == "yes_or_no":
@@ -69,9 +68,9 @@ class machine:
     def print(text: str) -> None:
         print(text)
     
-    def interprete(self, rule_name: str) -> tuple:
+    def interprete(self, rule_id: str) -> tuple:
         text = ""
-        for item in self.rules[rule_name].conditions:
+        for item in self.rules[rule_id].conditions:
             temp = ""
             if isinstance(item, list):
                 temp += f"self.answered[\"{item[0]}\"]"
@@ -90,35 +89,41 @@ class machine:
             elif isinstance(item, str):
                 temp = f" {item} "
             text += temp
-        ready = bool()
+        
         try:
             ready = eval(text)
         except:
             ready = False
+        
         return text, ready
     
     def run(self) -> None:
         while True:
-            # perform all available
-            for rule in self.rules.values():
-                cond, ready = self.interprete(rule.name)
-                #if rule.name == "RULE-15-rule-likes-russian-setting":
-                #    x = 5
-                if  ready == True and rule.activated == False and rule.requires_input == False:
-                    self.perform_actions(rule.name)
-                    rule.activated = True
-
+            # asking for input
             options = []
             for rule in self.rules.values():
-                cond, ready = self.interprete(rule.name)
+                cond, ready = self.interprete(rule.id)
                 if ready == True and rule.activated == False:
-                    options += [rule.name]
+                    options += [rule.id]
             try:
                 chosen_rule = choice(options)
                 self.perform_actions(chosen_rule)
                 self.rules[chosen_rule].activated = True
             except:
                 break
+
+            # calculating implications
+            while True:
+                stack = []
+                for rule in self.rules.values():
+                    cond, ready = self.interprete(rule.id)
+                    if  ready == True and rule.activated == False and rule.requires_input == False:
+                        stack += [rule]
+                for rule in stack:
+                    self.perform_actions(rule.id)
+                    rule.activated = True
+                if len(stack) == 0:
+                    break
         
 def main():
 
