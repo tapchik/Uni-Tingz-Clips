@@ -1,0 +1,26 @@
+[
+    ["id200", "AKO", "id000"],
+    ["id201", "AKO", "id001"],
+    ["id202", "AKO", "id000"],
+    ["id203", "AKO", "id000"],
+    ["id204", "AKO", "id001"],
+    ["id205", "AKO", "id000"],
+    ["id206", "AKO", "id000"],
+
+    ["id200", "genre", "id100"],
+    ["id201", "genre", "id100"],
+    ["id202", "genre", "id000"],
+    ["id203", "genre", "id101"],
+    ["id204", "genre", "id100"],
+    ["id205", "genre", "id101"],
+    ["id206", "genre", "id102"],
+
+    ["id200", "stars", "id300"],
+    ["id201", "stars", "id305"],
+    ["id202", "stars", "id301"],
+    ["id203", "stars", "id301"],
+    ["id204", "stars", "id302"],
+    ["id205", "stars", "id303"],
+    ["id206", "stars", "id303"],
+    ["id206", "stars", "id304"]
+]
