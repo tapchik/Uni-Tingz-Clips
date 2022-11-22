@@ -1,0 +1,4 @@
+[
+    {"options": ["cat", "dog"], "votes": 4},
+    {"options": ["dog", "cat"], "votes": 5}
+]

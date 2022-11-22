@@ -1,0 +1,8 @@
+[
+    {"options": ["Overwatch", "The Sims", "Don't Starve"], "votes": 4},
+    {"options": ["Overwatch", "Don't Starve", "The Sims"], "votes": 2},
+    {"options": ["The Sims", "Overwatch", "Don't Starve"], "votes": 2},
+    {"options": ["The Sims", "Don't Starve", "Overwatch"], "votes": 0},
+    {"options": ["Don't Starve", "Overwatch", "The Sims"], "votes": 1},
+    {"options": ["Don't Starve", "The Sims", "Overwatch"], "votes": 1}
+]
