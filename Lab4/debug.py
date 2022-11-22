@@ -31,8 +31,3 @@ elif DEBUG == (1, 1):
     funcs.PrintVerdict(points)
     print()
     exit()
-
-if len(sys.argv) == 1:
-    funcs.PrintHelp()
-    print()
-    exit()
