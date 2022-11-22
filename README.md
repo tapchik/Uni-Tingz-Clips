@@ -17,4 +17,4 @@ Try running:
 - \"python obvious.py\"
 - \"python obvious.py voted.json\"
 - \"python borda.py\"
-- \"python borda.py\" voted3.json\"
+- \"python borda.py voted3.json\"
